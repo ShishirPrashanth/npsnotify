@@ -16,11 +16,16 @@ class notification(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.title, self.body
 
 class receipent(models.Model):
     email = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     grade = models.IntegerField()
     section = models.CharField(max_length=1)
-    house = models.CharField(max_length=100)
+    house = models.CharField(max_length=15)
+    groups = models.TextField()
+
+class profile(models.Model):
+    user = models.ForeignKey('auth.User')
+    first_time = models.IntegerField()
